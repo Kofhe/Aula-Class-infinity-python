@@ -1,4 +1,4 @@
-# faça uma classe pare presentar um cachorro
+# faça uma classe para presentar um cachorro
 # Caracteristicas
 # nome
 # cor
