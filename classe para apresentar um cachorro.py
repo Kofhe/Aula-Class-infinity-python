@@ -13,6 +13,6 @@ Class Dog:
         return "auau"
 #objeto daclasse dog
 dog1 = Dog(nome="Totó",cor="caramelo",raça="indefinida")
-print(dog1)
+print(vars(dog1))
 print(dog1.latir())
 
