@@ -11,7 +11,7 @@ class Conta:
     def __init__(self,numero_conta,titular):
         self.numero_conta = numero_conta
         self.titular = titular
-        self.saldo = 0
+        self.saldo = 0 #não quero que o usuario passe na hora de criar o objeto
         self.data_criacao=datetime.strftime(datetime.now().date(),"%d/%m/%Y")#marca o momento de criação desta entidade
 
 #classe corrente
