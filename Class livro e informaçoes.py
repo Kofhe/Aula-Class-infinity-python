@@ -3,6 +3,11 @@ class Autor:
         self.nome = nome
         self.data_nascimento = data_nascimento
 
+class Biblioteca:
+    def __init__(self):
+        self.catalogo_livros = []
+        self.lista_membros = []
+        
 class Livro:
     def __init__(self, titulo, anoPub,autor:Autor):
         self.titulo = titulo
