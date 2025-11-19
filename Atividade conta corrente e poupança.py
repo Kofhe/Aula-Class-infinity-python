@@ -6,6 +6,7 @@
 
 #saldo não é recebido pelo usuario
 from datetime import datetime
+print(datetime.now().time())
 
 class Conta:
     def __init__(self,numero_conta,titular):
@@ -21,8 +22,33 @@ class Corrente(Conta):
         self.cheque_especial=100
         self.credito=400
 
-cliente1 = Corrente(numero_conta="0123",titular="Sei la")
-print(cliente1.saldo)
+    def sacar(self,valor_saque):
+        # retirar o valor do saldo
+        if self.saldo < valor_saque:
+            print("Saldo insuficiente!")
+            if self.saldo + self.cheque_especial < valor_saque:
+                print("Cheque especial não cobre")
+            else:
+                self.saldo -= valor_saque
+                print("Saque efetuado com sucesso! Cheque especial utilizado")
+
+                return ""
+        pass
+    
+    def depositar(self,valor_deposito):
+        # adicionar o valor no saldo
+        self.saldo +=valor_deposito
+        pass
+
+    def transferir(self,conta_destinada:Conta,valor):
+        # decrementa de uma conta e adiciona na outra 
+        if self.salo < valor:
+            print("Saldo insuficiente para transferência")
+            return ""
+        self.saldo -= valor
+        conta_destinada.saldo += valor
+        print("Transferência efetuada com sucesso!")
+        pass
 
 #classe poupança
 class Poupança(Conta):
@@ -30,5 +56,25 @@ class Poupança(Conta):
         super().__init__(numero_conta, titular)
         self.rendimento=6
 
-cliente2=Poupança(numero_conta="6789",titular="Batata")
-print(cliente2.data_criacao)
+    def gerar_juros(self):
+        # gera um juros de 1% sobre o saldo
+        self.saldo += (1/100)*self.saldo
+        pass    
+
+cliente1 = Corrente(numero_conta="0123",titular="Sei la")
+cliente2 = Corrente(numero_conta="0001",titular="Batatinha")
+
+print("O valor do saldo da conta 1 éigual a",cliente1.saldo)
+print("O valor do saldo da conta 1 éigual a",cliente2.saldo)
+
+
+print(cliente2.saldo)
+conta1.transferir(conta_destinada=cliente2,valor=20)
+print(cliente1.saldo)   
+print(cliente2.saldo)   
+
+contapou=Poupança(numero_conta="6789",titular="Batata")
+contapou.saldo = 100
+print(contapou.saldo)   
+contapou.gerar_juros()
+print(contapou.saldo) 
